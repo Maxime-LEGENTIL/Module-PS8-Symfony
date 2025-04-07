@@ -1,0 +1,34 @@
+{% extends '@PrestaShopCore/Admin/Sell/Catalog/Product/edit.html.twig' %}
+
+{% block product_header %}
+  {{ parent() }} {# Optionnel : garde le contenu original du bloc #}
+  <hr>
+  <h1>TEST MAXIME - BIENTOT L'HISTORIQUE EDITION PRODUCTS</h1>
+  <hr>
+
+  {% if agriproduct_logs is defined and agriproduct_logs|length > 0 %}
+      <div class="card mt-4">
+          <div class="card-header">
+              <strong>Historique des modifications produit</strong>
+          </div>
+          <div class="card-body">
+              <ul>
+                  {% for log in agriproduct_logs %}
+                      <li>
+                          [{{ log.date_add }}] - {{ log.action }} par {{ log.username }}
+                      </li>
+                  {% endfor %}
+              </ul>
+          </div>
+      </div>
+  {% else %}
+      <p>Aucun historique trouvé pour ce produit.</p>
+  {% endif %}
+
+
+{% endblock %}
+
+{% block product_footer %}
+  {{ parent() }} {# Conserve également le contenu original si besoin #}
+  {# Vous pouvez ajouter ici d'autres modifications pour le footer #}
+{% endblock %}

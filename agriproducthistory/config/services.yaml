@@ -1,0 +1,6 @@
+services:
+  Agriproducthistory\EventSubscriber\ProductAdminSubscriber:
+    arguments:
+      - '@twig'
+    tags:
+      - { name: kernel.event_subscriber }
